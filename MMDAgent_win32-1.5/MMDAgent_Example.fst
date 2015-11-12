@@ -142,7 +142,7 @@
 # 0011-0020 Initialization
 
 0    11   <eps>                               MODEL_ADD|bootscreen|Accessory\bootscreen\bootscreen.pmd|0.0,12.85,17.6|0.0,0.0,0.0|OFF
-11   12   MODEL_EVENT_ADD|bootscreen          MODEL_ADD|mei|Model\sd_mei\sd_mei.pmd|0.0,0.0,-14.0
+11   12   MODEL_EVENT_ADD|bootscreen          MODEL_ADD|mei|Model\mei\mei.pmd|0.0,0.0,-14.0
 12   13   <eps>                               MODEL_ADD|menu|Accessory\menu\menu.pmd|0.0,-4.5,0.0|0.0,0.0,0.0|ON|mei
 13   14   <eps>                               MOTION_ADD|menu|rotate|Motion\menu_rotation\menu_rotation.vmd|FULL|LOOP|OFF|OFF
 14   15   <eps>                               STAGE|Stage\building2\floor.bmp,Stage\building2\9423171.jpg
@@ -213,7 +213,7 @@
 78   79   SYNTH_EVENT_STOP|mei                MOTION_CHANGE|mei|base|Motion\mei_guide\mei_guide_happy.vmd
 79   80   <eps>                               SYNTH_START|mei|mei_voice_normal|お解りになりますか？
 80   81   SYNTH_EVENT_STOP|mei                MODEL_DELETE|panel
-81   82   <eps>                               MODEL_ADD|menu|Accessory\menu\menu.pmd|0.0,-4.5,0.0|0.0,0.0,0.0|mei
+81   82   <eps>                               MODEL_ADD|menu|Accessory\menu\menu.pmd|0.0,-4.5,0.0|0.0,0.0,0.0|ON|mei
 82   83   <eps>                               MOTION_CHANGE|mei|base|Motion\mei_wait\mei_wait.vmd
 83   2    <eps>                               MOTION_ADD|menu|rotate|Motion\menu_rotation\menu_rotation.vmd|FULL|LOOP|OFF
 
@@ -440,12 +440,21 @@
 
 # 01021-01040 2号館（案内) 
 
-1015  1021  RECOG_EVENT_STOP|2号館              STAGE|Stage\building3\floor.bmp,Stage\building3\eg.jpg
-1021  1022  <eps>                               SYNTH_START|mei|mei_voice_normal|正門から入り右側にある建物が2号館です。
-1022  1023  <eps>                               MOTION_ADD|mei|action|Motion\mei_greeting\mei_greeting.vmd|PART|ONCE
-1023  1024  SYNTH_EVENT_STOP|mei                SYNTH_START|mei|mei_voice_normal|分かりましたか？
-1024  1025  <eps>                               MOTION_ADD|mei|action|Motion\mei_imagine\mei_imagine_left_normal.vmd|PART|ONCE
-1025  1011  SYNTH_EVENT_STOP|mei                <eps>
+1015  1021  RECOG_EVENT_STOP|2号館               MODEL_DELETE|menu
+1021  1022   <eps>                               MODEL_ADD|panel|Accessory\map_hino\p_2.pmd|0.0,2.8,2.5|45.0,0.0,0.0|ON|mei
+1022  1023   <eps>                               MOTION_ADD|mei|action|Motion\mei_panel\mei_panel_on.vmd|PART|ONCE
+1023  1024   <eps>                               MOTION_CHANGE|mei|base|Motion\mei_guide\mei_guide_normal.vmd
+1024  1025   <eps>                               SYNTH_START|mei|mei_voice_normal|二号館は、正門から入り、直進すると正面に見える建物です。
+1025  1026   SYNTH_EVENT_STOP|mei                MOTION_ADD|mei|look|Motion\mei_look\mei_look_down.vmd|PART|ONCE
+1026  1027   <eps>                               SYNTH_START|mei|mei_voice_normal|キャンパスマップでは、こちらになります。
+1027  1028   <eps>                               MOTION_ADD|mei|action|Motion\mei_point\mei_point_center_buttom.vmd|PART|ONCE
+1028  1029   SYNTH_EVENT_STOP|mei                MOTION_CHANGE|mei|base|Motion\mei_guide\mei_guide_happy.vmd
+1029  1030   <eps>                               SYNTH_START|mei|mei_voice_normal|お解りになりますか？
+1030  1031   SYNTH_EVENT_STOP|mei                MODEL_DELETE|panel
+1031  1032   <eps>                               MODEL_ADD|menu|Accessory\menu\menu.pmd|0.0,-4.5,0.0|0.0,0.0,0.0|ON|mei
+1032  1033   <eps>                               MOTION_CHANGE|mei|base|Motion\mei_wait\mei_wait.vmd
+1033  1011   <eps>                               MOTION_ADD|menu|rotate|Motion\menu_rotation\menu_rotation.vmd|FULL|LOOP|OFF
+
 
 # 01041-01060 食堂（案内）
 
@@ -486,3 +495,242 @@
 1122  1123  SYNTH_EVENT_STOP|mei                SYNTH_START|mei|mei_voice_normal|どこを紹介しましょうか？
 1123  1124  <eps>                               MOTION_ADD|mei|action|Motion\mei_self_introduction\mei_self_introduction.vmd|PART|ONCE
 1124  151  SYNTH_EVENT_STOP|mei                <eps>
+
+
+# 01141-01160 一号館（案内）
+
+1015  1141  RECOG_EVENT_STOP|1号館               MODEL_DELETE|menu
+1141  1142   <eps>                               MODEL_ADD|panel|Accessory\map_hino\p_1.pmd|0.0,2.8,2.5|45.0,0.0,0.0|ON|mei
+1142  1143   <eps>                               MOTION_ADD|mei|action|Motion\mei_panel\mei_panel_on.vmd|PART|ONCE
+1143  1144   <eps>                               MOTION_CHANGE|mei|base|Motion\mei_guide\mei_guide_normal.vmd
+1144  1145   <eps>                               SYNTH_START|mei|mei_voice_normal|一号館は、正門から入り、突き当りを左に曲がると右側に見える建物です。
+1145  1146   SYNTH_EVENT_STOP|mei                MOTION_ADD|mei|look|Motion\mei_look\mei_look_down.vmd|PART|ONCE
+1146  1147   <eps>                               SYNTH_START|mei|mei_voice_normal|キャンパスマップでは、こちらになります。
+1147  1148   <eps>                               MOTION_ADD|mei|action|Motion\mei_point\mei_point_center_buttom.vmd|PART|ONCE
+1148  1149   SYNTH_EVENT_STOP|mei                MOTION_CHANGE|mei|base|Motion\mei_guide\mei_guide_happy.vmd
+1149  1150   <eps>                               SYNTH_START|mei|mei_voice_normal|お解りになりますか？
+1150  1151   SYNTH_EVENT_STOP|mei                MODEL_DELETE|panel
+1151  1152   <eps>                               MODEL_ADD|menu|Accessory\menu\menu.pmd|0.0,-4.5,0.0|0.0,0.0,0.0|ON|mei
+1152  1153   <eps>                               MOTION_CHANGE|mei|base|Motion\mei_wait\mei_wait.vmd
+1153  1011   <eps>                               MOTION_ADD|menu|rotate|Motion\menu_rotation\menu_rotation.vmd|FULL|LOOP|OFF
+
+
+# 01161-01180 三号館（案内）
+
+1015  1161  RECOG_EVENT_STOP|3号館               MODEL_DELETE|menu
+1161  1162   <eps>                               MODEL_ADD|panel|Accessory\map_hino\p_3n.pmd|0.0,2.8,2.5|45.0,0.0,0.0|ON|mei
+1162  1163   <eps>                               MOTION_ADD|mei|action|Motion\mei_panel\mei_panel_on.vmd|PART|ONCE
+1163  1164   <eps>                               MOTION_CHANGE|mei|base|Motion\mei_guide\mei_guide_normal.vmd
+1164  1165   <eps>                               SYNTH_START|mei|mei_voice_normal|三号館は、二号館のしたを通過して左側に見える建物です。
+1165  1166   SYNTH_EVENT_STOP|mei                MOTION_ADD|mei|look|Motion\mei_look\mei_look_down.vmd|PART|ONCE
+1166  1167   <eps>                               SYNTH_START|mei|mei_voice_normal|キャンパスマップでは、こちらになります。
+1167  1168   <eps>                               MOTION_ADD|mei|action|Motion\mei_point\mei_point_center_buttom.vmd|PART|ONCE
+1168  1169   SYNTH_EVENT_STOP|mei                MOTION_CHANGE|mei|base|Motion\mei_guide\mei_guide_happy.vmd
+1169  1170   <eps>                               SYNTH_START|mei|mei_voice_normal|お解りになりますか？
+1170  1171   SYNTH_EVENT_STOP|mei                MODEL_DELETE|panel
+1171  1172   <eps>                               MODEL_ADD|menu|Accessory\menu\menu.pmd|0.0,-4.5,0.0|0.0,0.0,0.0|ON|mei
+1172  1173   <eps>                               MOTION_CHANGE|mei|base|Motion\mei_wait\mei_wait.vmd
+1173  1011   <eps>                               MOTION_ADD|menu|rotate|Motion\menu_rotation\menu_rotation.vmd|FULL|LOOP|OFF
+
+
+
+
+# 01181-01200 4号館（案内）
+
+1015  1181  RECOG_EVENT_STOP|4号館               MODEL_DELETE|menu
+1181  1182   <eps>                               MODEL_ADD|panel|Accessory\map_hino\p_4n.pmd|0.0,2.8,2.5|45.0,0.0,0.0|ON|mei
+1182  1183   <eps>                               MOTION_ADD|mei|action|Motion\mei_panel\mei_panel_on.vmd|PART|ONCE
+1183  1184   <eps>                               MOTION_CHANGE|mei|base|Motion\mei_guide\mei_guide_normal.vmd
+1184  1185   <eps>                               SYNTH_START|mei|mei_voice_normal|四号館は、正面から見ると、右前の方向にあります。
+1185  1186   SYNTH_EVENT_STOP|mei                MOTION_ADD|mei|look|Motion\mei_look\mei_look_down.vmd|PART|ONCE
+1186  1187   <eps>                               SYNTH_START|mei|mei_voice_normal|キャンパスマップでは、こちらになります。
+1187  1188   <eps>                               MOTION_ADD|mei|action|Motion\mei_point\mei_point_center_buttom.vmd|PART|ONCE
+1188  1189   SYNTH_EVENT_STOP|mei                MOTION_CHANGE|mei|base|Motion\mei_guide\mei_guide_happy.vmd
+1189  1190   <eps>                               SYNTH_START|mei|mei_voice_normal|お解りになりますか？
+1190  1191   SYNTH_EVENT_STOP|mei                MODEL_DELETE|panel
+1191  1192   <eps>                               MODEL_ADD|menu|Accessory\menu\menu.pmd|0.0,-4.5,0.0|0.0,0.0,0.0|ON|mei
+1192  1193   <eps>                               MOTION_CHANGE|mei|base|Motion\mei_wait\mei_wait.vmd
+1193  1011   <eps>                               MOTION_ADD|menu|rotate|Motion\menu_rotation\menu_rotation.vmd|FULL|LOOP|OFF
+
+
+# 01201-01220 6号館（案内）
+
+1015  1201  RECOG_EVENT_STOP|6号館               MODEL_DELETE|menu
+1201  1202   <eps>                               MODEL_ADD|panel|Accessory\map_hino\p_6.pmd|0.0,2.8,2.5|45.0,0.0,0.0|ON|mei
+1202  1203   <eps>                               MOTION_ADD|mei|action|Motion\mei_panel\mei_panel_on.vmd|PART|ONCE
+1203  1204   <eps>                               MOTION_CHANGE|mei|base|Motion\mei_guide\mei_guide_normal.vmd
+1204  1205   <eps>                               SYNTH_START|mei|mei_voice_normal|六号館は、北門から入り左側に見える建物です。
+1205  1206   SYNTH_EVENT_STOP|mei                MOTION_ADD|mei|look|Motion\mei_look\mei_look_down.vmd|PART|ONCE
+1206  1207   <eps>                               SYNTH_START|mei|mei_voice_normal|キャンパスマップでは、こちらになります。
+1207  1208   <eps>                               MOTION_ADD|mei|action|Motion\mei_point\mei_point_center_buttom.vmd|PART|ONCE
+1208  1209   SYNTH_EVENT_STOP|mei                MOTION_CHANGE|mei|base|Motion\mei_guide\mei_guide_happy.vmd
+1209  1210   <eps>                               SYNTH_START|mei|mei_voice_normal|お解りになりますか？
+1210  1211   SYNTH_EVENT_STOP|mei                MODEL_DELETE|panel
+1211  1212   <eps>                               MODEL_ADD|menu|Accessory\menu\menu.pmd|0.0,-4.5,0.0|0.0,0.0,0.0|ON|mei
+1212  1213   <eps>                               MOTION_CHANGE|mei|base|Motion\mei_wait\mei_wait.vmd
+1213  1211   <eps>                               MOTION_ADD|menu|rotate|Motion\menu_rotation\menu_rotation.vmd|FULL|LOOP|OFF
+
+
+# 01221-01240 7号館（案内）
+
+1015  1221  RECOG_EVENT_STOP|7号館               MODEL_DELETE|menu
+1221  1222   <eps>                               MODEL_ADD|panel|Accessory\map_hino\p_7.pmd|0.0,2.8,2.5|45.0,0.0,0.0|ON|mei
+1222  1223   <eps>                               MOTION_ADD|mei|action|Motion\mei_panel\mei_panel_on.vmd|PART|ONCE
+1223  1224   <eps>                               MOTION_CHANGE|mei|base|Motion\mei_guide\mei_guide_normal.vmd
+1224  1225   <eps>                               SYNTH_START|mei|mei_voice_normal|7号館は、三号館の東側にある建物です。
+1225  1226   SYNTH_EVENT_STOP|mei                MOTION_ADD|mei|look|Motion\mei_look\mei_look_down.vmd|PART|ONCE
+1226  1227   <eps>                               SYNTH_START|mei|mei_voice_normal|キャンパスマップでは、こちらになります。
+1227  1228   <eps>                               MOTION_ADD|mei|action|Motion\mei_point\mei_point_center_buttom.vmd|PART|ONCE
+1228  1229   SYNTH_EVENT_STOP|mei                MOTION_CHANGE|mei|base|Motion\mei_guide\mei_guide_happy.vmd
+1229  1230   <eps>                               SYNTH_START|mei|mei_voice_normal|お解りになりますか？
+1230  1231   SYNTH_EVENT_STOP|mei                MODEL_DELETE|panel
+1231  1232   <eps>                               MODEL_ADD|menu|Accessory\menu\menu.pmd|0.0,-4.5,0.0|0.0,0.0,0.0|ON|mei
+1232  1233   <eps>                               MOTION_CHANGE|mei|base|Motion\mei_wait\mei_wait.vmd
+1233  1011   <eps>                               MOTION_ADD|menu|rotate|Motion\menu_rotation\menu_rotation.vmd|FULL|LOOP|OFF
+
+
+# 01241-01260 8号館（案内）
+
+1015  1241  RECOG_EVENT_STOP|8号館               MODEL_DELETE|menu
+1241  1242   <eps>                               MODEL_ADD|panel|Accessory\map_hino\p_8.pmd|0.0,2.8,2.5|45.0,0.0,0.0|ON|mei
+1242  1243   <eps>                               MOTION_ADD|mei|action|Motion\mei_panel\mei_panel_on.vmd|PART|ONCE
+1243  1244   <eps>                               MOTION_CHANGE|mei|base|Motion\mei_guide\mei_guide_normal.vmd
+1244  1245   <eps>                               SYNTH_START|mei|mei_voice_normal|八号館は、七号館の北側にある建物です。
+1245  1246   SYNTH_EVENT_STOP|mei                MOTION_ADD|mei|look|Motion\mei_look\mei_look_down.vmd|PART|ONCE
+1246  1247   <eps>                               SYNTH_START|mei|mei_voice_normal|キャンパスマップでは、こちらになります。
+1247  1248   <eps>                               MOTION_ADD|mei|action|Motion\mei_point\mei_point_center_buttom.vmd|PART|ONCE
+1248  1249   SYNTH_EVENT_STOP|mei                MOTION_CHANGE|mei|base|Motion\mei_guide\mei_guide_happy.vmd
+1249  1250   <eps>                               SYNTH_START|mei|mei_voice_normal|お解りになりますか？
+1250  1251   SYNTH_EVENT_STOP|mei                MODEL_DELETE|panel
+1251  1252   <eps>                               MODEL_ADD|menu|Accessory\menu\menu.pmd|0.0,-4.5,0.0|0.0,0.0,0.0|ON|mei
+1252  1253   <eps>                               MOTION_CHANGE|mei|base|Motion\mei_wait\mei_wait.vmd
+1253  1011   <eps>                               MOTION_ADD|menu|rotate|Motion\menu_rotation\menu_rotation.vmd|FULL|LOOP|OFF
+
+
+# 01261-01280 9号館（案内）
+
+1015  1261  RECOG_EVENT_STOP|9号館               MODEL_DELETE|menu
+1261  1262   <eps>                               MODEL_ADD|panel|Accessory\map_hino\p_9.pmd|0.0,2.8,2.5|45.0,0.0,0.0|ON|mei
+1262  1263   <eps>                               MOTION_ADD|mei|action|Motion\mei_panel\mei_panel_on.vmd|PART|ONCE
+1263  1264   <eps>                               MOTION_CHANGE|mei|base|Motion\mei_guide\mei_guide_normal.vmd
+1264  1265   <eps>                               SYNTH_START|mei|mei_voice_normal|九号館は、八号館の北側にある建物です。
+1265  1266   SYNTH_EVENT_STOP|mei                MOTION_ADD|mei|look|Motion\mei_look\mei_look_down.vmd|PART|ONCE
+1266  1267   <eps>                               SYNTH_START|mei|mei_voice_normal|キャンパスマップでは、こちらになります。
+1267  1268   <eps>                               MOTION_ADD|mei|action|Motion\mei_point\mei_point_center_buttom.vmd|PART|ONCE
+1268  1269   SYNTH_EVENT_STOP|mei                MOTION_CHANGE|mei|base|Motion\mei_guide\mei_guide_happy.vmd
+1269  1270   <eps>                               SYNTH_START|mei|mei_voice_normal|お解りになりますか？
+1270  1271   SYNTH_EVENT_STOP|mei                MODEL_DELETE|panel
+1271  1272   <eps>                               MODEL_ADD|menu|Accessory\menu\menu.pmd|0.0,-4.5,0.0|0.0,0.0,0.0|ON|mei
+1272  1273   <eps>                               MOTION_CHANGE|mei|base|Motion\mei_wait\mei_wait.vmd
+1273  1011   <eps>                               MOTION_ADD|menu|rotate|Motion\menu_rotation\menu_rotation.vmd|FULL|LOOP|OFF
+
+
+# 01281-01300 10号館（案内）
+
+1015  1281  RECOG_EVENT_STOP|10号館              MODEL_DELETE|menu
+1281  1282   <eps>                               MODEL_ADD|panel|Accessory\map_hino\p_10.pmd|0.0,2.8,2.5|45.0,0.0,0.0|ON|mei
+1282  1283   <eps>                               MOTION_ADD|mei|action|Motion\mei_panel\mei_panel_on.vmd|PART|ONCE
+1283  1284   <eps>                               MOTION_CHANGE|mei|base|Motion\mei_guide\mei_guide_normal.vmd
+1284  1285   <eps>                               SYNTH_START|mei|mei_voice_normal|十号館は、七号館の東側にある建物です。
+1285  1286   SYNTH_EVENT_STOP|mei                MOTION_ADD|mei|look|Motion\mei_look\mei_look_down.vmd|PART|ONCE
+1286  1287   <eps>                               SYNTH_START|mei|mei_voice_normal|キャンパスマップでは、こちらになります。
+1287  1288   <eps>                               MOTION_ADD|mei|action|Motion\mei_point\mei_point_center_buttom.vmd|PART|ONCE
+1288  1289   SYNTH_EVENT_STOP|mei                MOTION_CHANGE|mei|base|Motion\mei_guide\mei_guide_happy.vmd
+1289  1290   <eps>                               SYNTH_START|mei|mei_voice_normal|お解りになりますか？
+1290  1291   SYNTH_EVENT_STOP|mei                MODEL_DELETE|panel
+1291  1292   <eps>                               MODEL_ADD|menu|Accessory\menu\menu.pmd|0.0,-4.5,0.0|0.0,0.0,0.0|ON|mei
+1292  1293   <eps>                               MOTION_CHANGE|mei|base|Motion\mei_wait\mei_wait.vmd
+1293  1011   <eps>                               MOTION_ADD|menu|rotate|Motion\menu_rotation\menu_rotation.vmd|FULL|LOOP|OFF
+
+
+
+# 01301-01320 11号館（案内）
+
+1015  1301  RECOG_EVENT_STOP|11号館               MODEL_DELETE|menu
+1301  1302   <eps>                               MODEL_ADD|panel|Accessory\map_hino\p_11.pmd|0.0,2.8,2.5|45.0,0.0,0.0|ON|mei
+1302  1303   <eps>                               MOTION_ADD|mei|action|Motion\mei_panel\mei_panel_on.vmd|PART|ONCE
+1303  1304   <eps>                               MOTION_CHANGE|mei|base|Motion\mei_guide\mei_guide_normal.vmd
+1304  1305   <eps>                               SYNTH_START|mei|mei_voice_normal|十一号館は、八号館の東側にある建物です。
+1305  1306   SYNTH_EVENT_STOP|mei                MOTION_ADD|mei|look|Motion\mei_look\mei_look_down.vmd|PART|ONCE
+1306  1307   <eps>                               SYNTH_START|mei|mei_voice_normal|キャンパスマップでは、こちらになります。
+1307  1308   <eps>                               MOTION_ADD|mei|action|Motion\mei_point\mei_point_center_buttom.vmd|PART|ONCE
+1308  1309   SYNTH_EVENT_STOP|mei                MOTION_CHANGE|mei|base|Motion\mei_guide\mei_guide_happy.vmd
+1309  1310   <eps>                               SYNTH_START|mei|mei_voice_normal|お解りになりますか？
+1310  1311   SYNTH_EVENT_STOP|mei                MODEL_DELETE|panel
+1311  1312   <eps>                               MODEL_ADD|menu|Accessory\menu\menu.pmd|0.0,-4.5,0.0|0.0,0.0,0.0|ON|mei
+1312  1313   <eps>                               MOTION_CHANGE|mei|base|Motion\mei_wait\mei_wait.vmd
+1313  1011   <eps>                               MOTION_ADD|menu|rotate|Motion\menu_rotation\menu_rotation.vmd|FULL|LOOP|OFF
+
+
+# 01321-01340 12号館（案内）
+
+1015  1321  RECOG_EVENT_STOP|12号館               MODEL_DELETE|menu
+1321  1322   <eps>                               MODEL_ADD|panel|Accessory\map_hino\p_12.pmd|0.0,2.8,2.5|45.0,0.0,0.0|ON|mei
+1322  1323   <eps>                               MOTION_ADD|mei|action|Motion\mei_panel\mei_panel_on.vmd|PART|ONCE
+1323  1324   <eps>                               MOTION_CHANGE|mei|base|Motion\mei_guide\mei_guide_normal.vmd
+1324  1325   <eps>                               SYNTH_START|mei|mei_voice_normal|十二号館は、九号館の東側にある建物です。
+1325  1326   SYNTH_EVENT_STOP|mei                MOTION_ADD|mei|look|Motion\mei_look\mei_look_down.vmd|PART|ONCE
+1326  1327   <eps>                               SYNTH_START|mei|mei_voice_normal|キャンパスマップでは、こちらになります。
+1327  1328   <eps>                               MOTION_ADD|mei|action|Motion\mei_point\mei_point_center_buttom.vmd|PART|ONCE
+1328  1329   SYNTH_EVENT_STOP|mei                MOTION_CHANGE|mei|base|Motion\mei_guide\mei_guide_happy.vmd
+1329  1330   <eps>                               SYNTH_START|mei|mei_voice_normal|お解りになりますか？
+1330  1331   SYNTH_EVENT_STOP|mei                MODEL_DELETE|panel
+1331  1332   <eps>                               MODEL_ADD|menu|Accessory\menu\menu.pmd|0.0,-4.5,0.0|0.0,0.0,0.0|ON|mei
+1332  1333   <eps>                               MOTION_CHANGE|mei|base|Motion\mei_wait\mei_wait.vmd
+1333  1011   <eps>                               MOTION_ADD|menu|rotate|Motion\menu_rotation\menu_rotation.vmd|FULL|LOOP|OFF
+
+
+
+# 01341-01360 13号館（案内）
+
+1015  1341  RECOG_EVENT_STOP|13号館               MODEL_DELETE|menu
+1341  1342   <eps>                               MODEL_ADD|panel|Accessory\map_hino\p_13.pmd|0.0,2.8,2.5|45.0,0.0,0.0|ON|mei
+1342  1343   <eps>                               MOTION_ADD|mei|action|Motion\mei_panel\mei_panel_on.vmd|PART|ONCE
+1343  1344   <eps>                               MOTION_CHANGE|mei|base|Motion\mei_guide\mei_guide_normal.vmd
+1344  1345   <eps>                               SYNTH_START|mei|mei_voice_normal|十三号館は、正門から入り、左側に見える建物です。体育館として使われています。
+1345  1346   SYNTH_EVENT_STOP|mei                MOTION_ADD|mei|look|Motion\mei_look\mei_look_down.vmd|PART|ONCE
+1346  1347   <eps>                               SYNTH_START|mei|mei_voice_normal|キャンパスマップでは、こちらになります。
+1347  1348   <eps>                               MOTION_ADD|mei|action|Motion\mei_point\mei_point_center_buttom.vmd|PART|ONCE
+1348  1349   SYNTH_EVENT_STOP|mei                MOTION_CHANGE|mei|base|Motion\mei_guide\mei_guide_happy.vmd
+1349  1350   <eps>                               SYNTH_START|mei|mei_voice_normal|お解りになりますか？
+1350  1351   SYNTH_EVENT_STOP|mei                MODEL_DELETE|panel
+1351  1352   <eps>                               MODEL_ADD|menu|Accessory\menu\menu.pmd|0.0,-4.5,0.0|0.0,0.0,0.0|ON|mei
+1352  1353   <eps>                               MOTION_CHANGE|mei|base|Motion\mei_wait\mei_wait.vmd
+1353  1011   <eps>                               MOTION_ADD|menu|rotate|Motion\menu_rotation\menu_rotation.vmd|FULL|LOOP|OFF
+
+
+# 01361-01380 14号館（案内）
+
+1015  1361  RECOG_EVENT_STOP|14号館               MODEL_DELETE|menu
+1361  1362   <eps>                               MODEL_ADD|panel|Accessory\map_hino\p_14.pmd|0.0,2.8,2.5|45.0,0.0,0.0|ON|mei
+1362  1363   <eps>                               MOTION_ADD|mei|action|Motion\mei_panel\mei_panel_on.vmd|PART|ONCE
+1363  1364   <eps>                               MOTION_CHANGE|mei|base|Motion\mei_guide\mei_guide_normal.vmd
+1364  1365   <eps>                               SYNTH_START|mei|mei_voice_normal|十四号館は、南門から入り左側に見える建物です。学生会館として使われています。
+1365  1366   SYNTH_EVENT_STOP|mei                MOTION_ADD|mei|look|Motion\mei_look\mei_look_down.vmd|PART|ONCE
+1366  1367   <eps>                               SYNTH_START|mei|mei_voice_normal|キャンパスマップでは、こちらになります。
+1367  1368   <eps>                               MOTION_ADD|mei|action|Motion\mei_point\mei_point_center_buttom.vmd|PART|ONCE
+1368  1369   SYNTH_EVENT_STOP|mei                MOTION_CHANGE|mei|base|Motion\mei_guide\mei_guide_happy.vmd
+1369  1370   <eps>                               SYNTH_START|mei|mei_voice_normal|お解りになりますか？
+1370  1371   SYNTH_EVENT_STOP|mei                MODEL_DELETE|panel
+1371  1372   <eps>                               MODEL_ADD|menu|Accessory\menu\menu.pmd|0.0,-4.5,0.0|0.0,0.0,0.0|ON|mei
+1372  1373   <eps>                               MOTION_CHANGE|mei|base|Motion\mei_wait\mei_wait.vmd
+1373  1011   <eps>                               MOTION_ADD|menu|rotate|Motion\menu_rotation\menu_rotation.vmd|FULL|LOOP|OFF
+
+
+# 01381-01400 5号館（案内）
+
+1015  1381  RECOG_EVENT_STOP|5号館               MODEL_DELETE|menu
+1381  1382   <eps>                               MODEL_ADD|panel|Accessory\map_hino\p_5n.pmd|0.0,2.8,2.5|45.0,0.0,0.0|ON|mei
+1382  1383   <eps>                               MOTION_ADD|mei|action|Motion\mei_panel\mei_panel_on.vmd|PART|ONCE
+1383  1384   <eps>                               MOTION_CHANGE|mei|base|Motion\mei_guide\mei_guide_normal.vmd
+1384  1385   <eps>                               SYNTH_START|mei|mei_voice_normal|五号館は、三号館の北側にある建物です。
+1385  1386   SYNTH_EVENT_STOP|mei                MOTION_ADD|mei|look|Motion\mei_look\mei_look_down.vmd|PART|ONCE
+1386  1387   <eps>                               SYNTH_START|mei|mei_voice_normal|キャンパスマップでは、こちらになります。
+1387  1388   <eps>                               MOTION_ADD|mei|action|Motion\mei_point\mei_point_center_buttom.vmd|PART|ONCE
+1388  1389   SYNTH_EVENT_STOP|mei                MOTION_CHANGE|mei|base|Motion\mei_guide\mei_guide_happy.vmd
+1389  1390   <eps>                               SYNTH_START|mei|mei_voice_normal|お解りになりますか？
+1390  1391   SYNTH_EVENT_STOP|mei                MODEL_DELETE|panel
+1391  1392   <eps>                               MODEL_ADD|menu|Accessory\menu\menu.pmd|0.0,-4.5,0.0|0.0,0.0,0.0|ON|mei
+1392  1393   <eps>                               MOTION_CHANGE|mei|base|Motion\mei_wait\mei_wait.vmd
+1393  1011   <eps>                               MOTION_ADD|menu|rotate|Motion\menu_rotation\menu_rotation.vmd|FULL|LOOP|OFF
+
